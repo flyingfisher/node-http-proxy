@@ -4,3 +4,21 @@ Add ability to change response script and link relative url when proxy
 
 Add this ability for meteor in this moment 
 (version 0.6.4 still not support ROOT_URL, so I change proxy code to avoid this problem)
+
+usage:
+```js
+var httpProxy = require('http-proxy');
+
+var options = {
+  replaceRelativePath: true,
+  pathnameOnly: true,
+  router: {
+    '/wiki': '127.0.0.1:8001',
+    '/blog': '127.0.0.1:8002',
+    '/api':  '127.0.0.1:8003'
+  }
+}
+
+var proxyServer = httpProxy.createServer(options);
+proxyServer.listen(80);
+```
