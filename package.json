@@ -1,6 +1,6 @@
 {
   "name": "seafish-http-proxy-meteor",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A full-featured http reverse proxy use node.js for meteor",
   "author": "seafish <yu.flying1004@gmail.com>",
   "maintainers": [],
