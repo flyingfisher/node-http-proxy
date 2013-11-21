@@ -5,6 +5,11 @@ Add ability to change response script and link relative url when proxy
 Add this ability for meteor in this moment 
 (version 0.6.4 still not support ROOT_URL, so I change proxy code to avoid this problem)
 
+This is forked from master, and until now, websocket can not pass through if use node 0.10.X
+This works fine with websocket under node 0.8.17 which I used now
+
+<a href="https://github.com/visionmedia/n">n</a> is a great node version maintain tool
+
 normal usage:
 ```js
 var httpProxy = require('seafish-http-proxy-meteor');
