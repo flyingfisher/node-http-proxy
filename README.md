@@ -43,11 +43,10 @@ proxyServer.listen(80);
 
 meteor usage: after 0.6.6.1
 ```js
-// suppose ROOT_URL is "yourdomain.com:3000/meteor"
+// suppose ROOT_URL is "localhost:3000/meteor"
 var httpProxy = require('seafish-http-proxy-meteor');
 
 var options = {
-  replaceRelativePath: true,
   pathnameOnly: true,
   router: {
     '/meteor': '127.0.0.1:3000/meteor',
@@ -57,4 +56,51 @@ var options = {
 
 var proxyServer = httpProxy.createServer(options);
 proxyServer.listen(80);
+```
+
+Simple use
+```js
+// suppose ROOT_URL is "localhost:3000"
+var httpProxy = require('seafish-http-proxy-meteor');
+
+var options = {
+  pathnameOnly: true,
+  router: {
+    '/otherapp': '127.0.0.1:8002',
+    '/': '127.0.0.1:3000/',
+  }
+}
+
+var proxyServer = httpProxy.createServer(options);
+proxyServer.listen(80);
+```
+
+Use with https
+```js
+// suppose ROOT_URL is "localhost:3000"
+var httpProxy = require('seafish-http-proxy-meteor');
+
+var options = {
+  pathnameOnly: true,
+  router: {
+    '/otherapp': '127.0.0.1:8002',
+    '/': '127.0.0.1:3000/',
+  },
+  https: {
+    key: "",
+    cert: ""
+  }
+}
+
+var proxyServer = httpProxy.createServer(options);
+proxyServer.listen(443);
+```
+
+The replaceRelativePath option, work for html page, change things like 
+```html
+<script src="/test.js"></script>
+``` 
+into
+```html
+<script src="/path/test.js"></script>
 ```
